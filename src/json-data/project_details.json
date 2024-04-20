@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "name": "Project 1",
+    "image": "https://example.com/project1.jpg",
+    "tech_stack": ["React", "Node.js", "MongoDB"],
+    "github_repo": "https://github.com/example/project1",
+    "url": "https://example.com/project1"
+  },
+  {
+    "id": 2,
+    "name": "Project 2",
+    "image": "https://example.com/project2.jpg",
+    "tech_stack": ["HTML", "CSS", "JavaScript"],
+    "github_repo": "https://github.com/example/project2",
+    "url": "https://example.com/project2"
+  },
+  {
+    "id": 3,
+    "name": "Project 3",
+    "image": "https://example.com/project3.jpg",
+    "tech_stack": ["Python", "Django", "PostgreSQL"],
+    "github_repo": "https://github.com/example/project3",
+    "url": "https://example.com/project3"
+  }
+]

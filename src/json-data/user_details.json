@@ -1,0 +1,27 @@
+[
+  {
+    "id": 1,
+    "firstname": "Ashim",
+    "lastname": "Shrestha",
+    "role": "Full Stack Developer",
+    "bio": "Passionate full-stack web developer skilled in crafting elegant and responsive web applications from concept to deployment. Specializing in both front-end and back-end technologies to deliver seamless digital experiences.",
+    "email": "ashimshrestha125@gmail.com",
+    "linkedIn": "https://www.linkedin.com/in/ashim-shrestha-72a16a260/",
+    "github": "https://github.com/AshimStha",
+    "social_ig": "https://www.instagram.com/ash.imstha/",
+    "skills": [
+      {
+        "category": "Design",
+        "skills": ["Figma", "Adobe", "Photoshop"]
+      },
+      {
+        "category": "Front-end",
+        "skills": ["HTML", "CSS", "MERN", "Laravel"]
+      },
+      {
+        "category": "Collaboration",
+        "skills": ["Git", "Slack", "Jira"]
+      }
+    ]
+  }
+]
