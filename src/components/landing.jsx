@@ -1,33 +1,50 @@
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import {
   AiFillGithub,
   AiFillLinkedin,
   AiFillInstagram,
 } from "react-icons/ai";
-import { useState } from "react";
-import profile from "../../public/dp2.jpg";
-
+import profile from "/src/assets/dp2.jpg";
 
 export default function Landing() {
+  const [userData, setUserData] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        const response = await axios.get("/user");
+        setUserData(response.data);
+        setLoading(false);
+      } catch (error) {
+        console.error("Error fetching user data:", error);
+        setLoading(false);
+      }
+    };
+
+    fetchUserData();
+  }, []);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (!userData) {
+    return <div>User data not found</div>;
+  }
+
   return (
     <section className="text-xl text-center p-10 py-10">
       <h1 className="text-5xl py-2 text-teal-600 font-medium md:text-6xl">
-        Ashim Shrestha
+        {`${userData.firstname} ${userData.lastname}`}
       </h1>
-      <h2 className="text-2xl py-2 md:text-3xl">Full Stack Developer.</h2>
+      <h2 className="text-2xl py-2 md:text-3xl">{userData.role}</h2>
 
-      {/**
-       * max-w-xl - Setting the max-width to the p tag
-       * mx-auto - Alignment in the x-axis (centering it)
-       */}
       <p className="text-md py-5 leading-8 text-gray-800 max-w-xl mx-auto md:text-xl">
-        Passionate full-stack web developer skilled in crafting elegant and
-        responsive web applications from concept to deployment. Specializing in
-        both front-end and back-end technologies to deliver seamless digital
-        experiences.
+        {userData.bio}
       </p>
 
-      {/* The image */}
-      {/* Here, the border radius is made 50% by using the same height and width */}
       <div className="mx-auto rounded-full w-90 h-90 overflow-hidden mt-10 mb-10 md:h-96 md:w-96">
         <img
           className="mx-auto object-cover h-full w-full"
@@ -36,15 +53,14 @@ export default function Landing() {
         />
       </div>
 
-      {/* The social icons */}
       <div className="text-5xl flex justify-center gap-16 py-3 text-gray-600">
-        <a href="https://github.com/AshimStha">
+        <a href={userData.github}>
           <AiFillGithub />
         </a>
-        <a href="https://www.linkedin.com/in/ashim-shrestha-72a16a260/">
+        <a href={userData.linkedIn}>
           <AiFillLinkedin />
         </a>
-        <a href="https://www.instagram.com/ash.imstha/">
+        <a href={userData.social_ig}>
           <AiFillInstagram />
         </a>
       </div>

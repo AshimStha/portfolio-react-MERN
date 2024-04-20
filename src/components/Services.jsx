@@ -1,6 +1,6 @@
-import code from "../../public/code.png";
-import design from "../../public/design.png";
-import consulting from "../../public/consulting.png";
+import code from "/src/assets/code.png";
+import design from "/src/assets/design.png";
+import consulting from "/src/assets/consulting.png";
 
 export default function Services() {
   return (

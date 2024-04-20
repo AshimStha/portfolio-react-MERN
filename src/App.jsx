@@ -5,7 +5,7 @@ import Header from "./components/header";
 import Landing from "./components/landing";
 import Stack from "./components/techStack";
 import Services from "./components/Services";
-import Projects from "./components/project/projects";
+import ProjectCard from "./components/project/projectCard";
 import Footer from "./components/footer";
 
 function App() {
@@ -16,7 +16,7 @@ function App() {
       <Landing />
       <Stack />
       <Services />
-      <Projects />
+      <ProjectCard />
       <Footer />
     </main>
   );
