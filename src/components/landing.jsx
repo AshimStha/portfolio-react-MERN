@@ -8,14 +8,15 @@ import {
 import profile from "/src/assets/dp2.jpg";
 
 export default function Landing() {
-  const [userData, setUserData] = useState(null);
+  const [userData, setUserData] = useState({});
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        const response = await axios.get("/user");
-        setUserData(response.data);
+        const response = await fetch("http://localhost:8000/user");
+        const data = await response.json();
+        setUserData(data);
         setLoading(false);
       } catch (error) {
         console.error("Error fetching user data:", error);
