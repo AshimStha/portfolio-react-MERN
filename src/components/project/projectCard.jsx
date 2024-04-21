@@ -8,8 +8,9 @@ export default function ProjectCard() {
   useEffect(() => {
     const fetchProjects = async () => {
       try {
-        const response = await axios.get("/projects");
-        setProjects(response.data);
+        const response = await fetch("http://localhost:8000/projects");
+        const data = await response.json();
+        setProjects(data);
         setLoading(false);
       } catch (error) {
         console.error("Error fetching project data:", error);
@@ -33,29 +34,32 @@ export default function ProjectCard() {
       <h1 className="text-4xl font-medium mb-10 py-2 text-teal-600 md:text-5xl">
         Projects
       </h1>
-      {projects.map(project => (
-        <div className="basis-1/4 flex-1" key={project._id}>
-          <img
-            className="rounded-t-lg object-cover"
-            width={"100%"}
-            height={"100%"}
-            src={project.image}
-            alt={project.name}
-          />
-          <div className="p-4 bg-black bg-opacity-50 text-white rounded-b-lg">
-            <h3 className="text-lg font-medium mb-2">{project.name}</h3>
-            <p className="text-sm mb-2">
-              Tech Stack: {project.tech_stack.join(", ")}
-            </p>
-            <p className="text-sm mb-2">
-              GitHub Repo: <a href={project.github_repo}>Go to Link</a>
-            </p>
-            <p className="text-sm">
-              URL: <a href={project.url}>Live Preview</a>
-            </p>
+      <div className="flex flex-1 flex-wrap justify-center gap-10">
+        {projects.map((project) => (
+          <div
+            key={project._id}
+            className="bg-white rounded-lg shadow-lg flex-grow max-w-80"
+          >
+            <img
+              className="rounded-t-lg object-cover w-full h-48"
+              src={project.image}
+              alt={project.name}
+            />
+            <div className="p-4">
+              <h3 className="text-lg font-medium mb-2">{project.name}</h3>
+              <p className="text-sm mb-2">
+                Tech Stack: {project.tech_stack.join(", ")}
+              </p>
+              <p className="text-sm mb-2">
+                <a className="text-blue-600" href={project.github_repo}>GitHub Repo Link</a>
+              </p>
+              <p className="text-sm">
+                <a className="text-blue-600" href={project.url}>Live Preview</a>
+              </p>
+            </div>
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
     </section>
   );
 }

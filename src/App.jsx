@@ -16,7 +16,7 @@ function App() {
       <Landing />
       <Stack />
       <Services />
-      {/* <ProjectCard /> */}
+      <ProjectCard />
       <Footer />
     </main>
   );
